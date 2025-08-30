@@ -1,0 +1,359 @@
+/* Reset + Base */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* App container */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;   /* full screen height */
+  font-family: Arial, sans-serif;
+  background: #f9fafb;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 20px 10px 10px;
+}
+.header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #333;
+}
+.header p {
+  margin: 5px 0 15px;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;  /* expand to fill remaining space */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 10px 15px;
+}
+
+/* Filters Panel */
+.filters-panel {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  background: #fff;
+  padding: 15px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: fit-content;
+  transition: all 0.3s ease;
+}
+
+.filters-panel label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.filters-panel select,
+.filters-panel button {
+  margin-top: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: all 0.2s ease-in-out;
+}
+
+.filters-panel select:focus,
+.filters-panel button:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52,152,219,0.5);
+}
+
+.filters-panel button {
+  background: #3498db;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.filters-panel button:hover {
+  background: #217dbb;
+}
+
+/* Map Container */
+/* Map Container - Fixes the small map issue */
+.map-container {
+  height: 80vh;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+
+/* Popup custom styling */
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.leaflet-popup-content {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.leaflet-popup-tip {
+  background: #fff;
+}
+
+/* Loader spinner */
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Legend */
+.info.legend {
+  background: white;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.4;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+.info.legend h4 {
+  margin: 0 0 5px;
+  font-size: 13px;
+  color: #333;
+}
+.info.legend i {
+  width: 12px;
+  height: 12px;
+  float: left;
+  margin-right: 6px;
+  opacity: 0.8;
+}
+
+
+/* ---- Report Panel ---- */
+.report-panel {
+  margin: 0 auto;
+  width: min(900px, 95%);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 16px 18px;
+}
+
+.report-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.report-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #2c3e50;
+}
+
+.btn-primary {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #3498db;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .1s ease, background .2s ease;
+}
+.btn-primary:hover { background: #2980b9; transform: translateY(-1px); }
+.btn-primary:disabled { opacity: .6; cursor: not-allowed; }
+
+.report-output {
+  margin-top: 10px;
+  text-align: left;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  color: #2c3e50;
+}
+
+.muted { color: #777; }
+.error { color: #c0392b; font-weight: 600; }
+
+/* Report Section */
+.report-panel {
+  margin: 30px auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+.report-panel button {
+  background: #0077cc;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+
+.report-panel button:hover {
+  background: #005fa3;
+}
+
+.report-panel button:disabled {
+  background: #a0c4ff;
+  cursor: not-allowed;
+}
+
+.report-box {
+  margin-top: 20px;
+  padding: 20px;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.report-box ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.report-box:hover {
+  transform: translateY(-2px);
+}
+
+.report-box pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.report-box li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+  font-size: 15px;
+  color: #333;
+}
+
+
+
+.app-header {
+  text-align: center;
+  margin: 30px 0 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0; /* subtle divider */
+}
+
+.app-header h1 {
+  font-size: 2.2rem;
+  margin: 0;
+  font-weight: 700;
+  color: #1e293b; /* dark slate for professional look */
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  margin-top: 6px;
+  color: #475569; /* softer gray */
+}
+
+
+
+/* ---------- NavBar ---------- */
+.nav-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e6e9ee;
+  padding: 10px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.brand-emoji { font-size: 22px; }
+.brand-title { font-weight:700; color:#1e293b; font-size:18px; }
+.nav-links { display:flex; gap:12px; align-items:center; }
+.nav-link {
+  color:#475569;
+  text-decoration:none;
+  padding:8px 10px;
+  border-radius:6px;
+}
+.nav-link:hover { background:#f1f5f9; color:#0f172a; }
+.nav-link.active { background:#0ea5e9; color:white; }
+
+/* ---------- Home / Hero ---------- */
+.home-page .hero {
+  max-width: 1000px;
+  margin: 36px auto 10px;
+  padding: 28px;
+  background: linear-gradient(180deg,#fff,#f7fbff);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(16,24,40,0.06);
+  text-align: center;
+}
+.home-page .hero h1 { margin: 0 0 10px; font-size: 1.8rem; }
+.home-page .lead { margin: 0 0 18px; color:#475569; }
+.btn-primary {
+  background:#0ea5e9; color:#fff; padding:12px 20px; border-radius:8px; text-decoration:none;
+  font-weight:700;
+}
+.features { display:flex; gap:18px; max-width:1000px; margin:20px auto; justify-content:space-between; flex-wrap:wrap; }
+.feature { background:#fff; padding:16px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.04); flex:1 1 230px; }
+
+/* ---------- Visualizer page header spacing ---------- */
+.visualizer-page .app-header {
+  max-width: 1100px;
+  margin: 24px auto 12px;
+  text-align:center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e6e9ee;
+}
+
+/* ---------- Report styling (better) ---------- */
+.report-panel { max-width: 1100px; margin: 20px auto; padding: 0 12px 32px; text-align:center; }
+.btn-generate { background:#007bff; color:#fff; padding:10px 16px; border-radius:8px; font-weight:600; border:none; cursor:pointer;}
+.report-box { margin-top:16px; text-align:left; background:#fff; border-radius:10px; border:1px solid #e6e9ee; padding:18px; box-shadow:0 6px 18px rgba(12,24,48,0.04); }
+
+/* keep your existing map, popup, legend css below — do not remove */
+
+/* Responsive adjustments */
+@media (max-width: 800px) {
+  .nav-inner { padding: 0 12px; }
+  .features { gap:12px; }
+}
