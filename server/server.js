@@ -1,8 +1,8 @@
 // server/server.js
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
 const path = require("path");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
@@ -28,7 +28,6 @@ app.post("/api/summary", async (req, res) => {
     const between3to5 = mags.filter((m) => m >= 3 && m < 5).length;
     const above5 = mags.filter((m) => m >= 5).length;
 
-    // 🌀 Multiple templates for dynamic text
     const templates = [
       `📊 In the last period, ${total} earthquakes were detected. Minor quakes (<3) made up ${under3}, moderate (3–5) were ${between3to5}, and ${above5} were strong. The strongest reached M${maxMag} near ${strongest.place}.`,
       `🌍 Seismic activity update: ${total} total quakes recorded. ${under3} were small tremors, ${between3to5} were moderate, and ${above5} were significant. The largest quake (M${maxMag}) occurred at ${strongest.place}.`,
@@ -36,9 +35,7 @@ app.post("/api/summary", async (req, res) => {
       `📌 Earthquake summary: ${total} events in total. Most were small, but the strongest measured M${maxMag} near ${strongest.place}.`
     ];
 
-    // Pick a random template
     const fakeSummary = templates[Math.floor(Math.random() * templates.length)];
-
     res.json({ summary: fakeSummary });
   } catch (err) {
     console.error(err.message);
@@ -46,14 +43,14 @@ app.post("/api/summary", async (req, res) => {
   }
 });
 
-// ✅ Serve React build (important for Codesandbox/Vercel/Netlify)
-app.use(express.static(path.join(__dirname, "../build")));
+// ✅ Serve React build in production
+const buildPath = path.join(__dirname, "..", "build");
+app.use(express.static(buildPath));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../build", "index.html"));
+  res.sendFile(path.join(buildPath, "index.html"));
 });
 
-// ✅ Codesandbox will auto-assign PORT
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () =>
   console.log(`✅ App running on http://localhost:${PORT}`)
