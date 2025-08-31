@@ -1,7 +1,8 @@
-// server/server.js 
+// server/server.js
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const path = require("path");
 
 dotenv.config();
 
@@ -45,7 +46,15 @@ app.post("/api/summary", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5001;
+// ✅ Serve React build (important for Codesandbox/Vercel/Netlify)
+app.use(express.static(path.join(__dirname, "../build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build", "index.html"));
+});
+
+// ✅ Codesandbox will auto-assign PORT
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
-  console.log(`✅ AI server (mock) running on http://localhost:${PORT}`)
+  console.log(`✅ App running on http://localhost:${PORT}`)
 );
