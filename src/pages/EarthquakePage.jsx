@@ -46,7 +46,8 @@ export default function EarthquakePage() {
           events.reduce((sum, e) => sum + (e.mag || 0), 0) / events.length || 0,
       };
 
-      const res = await fetch('http://localhost:5001/api/summary', {
+      // ✅ FIX: use relative path so it works everywhere
+      const res = await fetch('/api/summary', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ filters, stats, events }),
@@ -55,6 +56,7 @@ export default function EarthquakePage() {
       const json = await res.json();
       setReport(json.summary || 'No summary returned');
     } catch (err) {
+      console.error(err);
       setReport('⚠️ Failed to generate report.');
     } finally {
       setReportLoading(false);
@@ -91,9 +93,11 @@ export default function EarthquakePage() {
                     <li key={idx}>{line.replace(/^[-•]\s*/, "")}</li>
                   ))}
               </ul>
-              <small className="demo-note">(The real AI-powered summaries use OpenAI’s API,  
-  but since the account requires a paid billing plan,  
-  this demo version generates a local summary instead.  )</small>
+              <small className="demo-note">
+                (The real AI-powered summaries use OpenAI’s API,  
+                but since the account requires a paid billing plan,  
+                this demo version generates a local summary instead.)
+              </small>
             </div>
           )}
         </div>
