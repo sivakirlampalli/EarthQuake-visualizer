@@ -54,7 +54,7 @@ app.get("*", (req, res) => {
 });
 
 // ✅ Codesandbox will auto-assign PORT
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () =>
   console.log(`✅ App running on http://localhost:${PORT}`)
 );
